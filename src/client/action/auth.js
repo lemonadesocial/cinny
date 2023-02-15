@@ -101,4 +101,5 @@ export {
   createTemporaryClient, login, verifyEmail,
   loginWithToken, startSsoLogin,
   completeRegisterStage,
+  updateLocalStore,
 };
