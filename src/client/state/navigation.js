@@ -408,6 +408,9 @@ class Navigation extends EventEmitter {
           action.targetDevice,
         );
       },
+      [cons.actions.navigation.OPEN_LEMONADE_PROFILE]: () => {
+        this.emit(cons.events.navigation.LEMONADE_PROFILE_OPENED, action.userId);
+      },
     };
     actions[action.type]?.();
   }
