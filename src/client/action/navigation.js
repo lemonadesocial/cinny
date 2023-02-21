@@ -109,6 +109,13 @@ export function openProfileViewer(userId, roomId) {
   });
 }
 
+export function openLemonadeProfile(userId, roomId) {
+  appDispatcher.dispatch({
+    type: cons.actions.navigation.OPEN_LEMONADE_PROFILE,
+    userId,
+  });
+}
+
 export function openSettings(tabText) {
   appDispatcher.dispatch({
     type: cons.actions.navigation.OPEN_SETTINGS,
