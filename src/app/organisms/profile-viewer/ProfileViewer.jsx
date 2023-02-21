@@ -168,6 +168,8 @@ function ProfileFooter({ roomId, userId, onRequestClose }) {
 
   const isBanned = member?.membership === 'ban';
 
+  const isLemonadeUser = /lemonade\.social$/.test(userId);
+
   const onCreated = (dmRoomId) => {
     if (isMountedRef.current === false) return;
     setIsCreatingDM(false);
@@ -253,15 +255,17 @@ function ProfileFooter({ roomId, userId, onRequestClose }) {
       >
         {isCreatingDM ? 'Creating room...' : 'Message'}
       </Button>
-      <Button
-        variant="positive"
-        onClick={() => {
-          openLemonadeProfile(userId);
-          onRequestClose();
-        }}
-      >
-        View profile
-      </Button>
+      { isLemonadeUser && (
+        <Button
+          variant="positive"
+          onClick={() => {
+            openLemonadeProfile(userId);
+            onRequestClose();
+          }}
+        >
+          View profile
+        </Button>
+      )}
       { isBanned && canIKick && (
         <Button
           variant="positive"
