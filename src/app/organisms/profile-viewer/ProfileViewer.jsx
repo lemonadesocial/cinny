@@ -7,7 +7,7 @@ import { twemojify } from '../../../util/twemojify';
 import initMatrix from '../../../client/initMatrix';
 import cons from '../../../client/state/cons';
 import navigation from '../../../client/state/navigation';
-import { selectRoom, openReusableContextMenu } from '../../../client/action/navigation';
+import { selectRoom, openReusableContextMenu, openLemonadeProfile } from '../../../client/action/navigation';
 import * as roomActions from '../../../client/action/room';
 
 import {
@@ -252,6 +252,15 @@ function ProfileFooter({ roomId, userId, onRequestClose }) {
         disabled={isCreatingDM}
       >
         {isCreatingDM ? 'Creating room...' : 'Message'}
+      </Button>
+      <Button
+        variant="positive"
+        onClick={() => {
+          openLemonadeProfile(userId);
+          onRequestClose();
+        }}
+      >
+        View profile
       </Button>
       { isBanned && canIKick && (
         <Button
