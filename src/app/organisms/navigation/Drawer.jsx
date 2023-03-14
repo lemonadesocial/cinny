@@ -8,7 +8,6 @@ import navigation from '../../../client/state/navigation';
 import Text from '../../atoms/text/Text';
 import ScrollView from '../../atoms/scroll/ScrollView';
 
-import DrawerHeader from './DrawerHeader';
 import DrawerBreadcrumb from './DrawerBreadcrumb';
 import Home from './Home';
 import Directs from './Directs';
@@ -64,7 +63,6 @@ function Drawer() {
 
   return (
     <div className="drawer">
-      <DrawerHeader selectedTab={selectedTab} spaceId={spaceId} />
       <div className="drawer__content-wrapper">
         {navigation.selectedSpacePath.length > 1 && selectedTab !== cons.tabs.DIRECTS && (
           <DrawerBreadcrumb spaceId={spaceId} />
