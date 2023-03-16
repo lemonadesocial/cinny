@@ -10,7 +10,7 @@
   --bg-surface-extra-low-transparent: hsla(208, 8%, 14%, 0);
   --bg-surface-hover: rgba(255, 255, 255, 3%);
   --bg-surface-active: rgba(255, 255, 255, 5%);
-  --bg-surface-border: rgba(0, 0, 0, 20%);
+  --bg-surface-border: rgba(255, 255, 255, 0.12);
 
   --bg-primary: rgb(42, 98, 166);
   --bg-primary-hover: rgba(42, 98, 166, 80%);
@@ -32,21 +32,21 @@
   --bg-danger-active: rgba(240, 71, 71, 10%);
   --bg-danger-border: rgba(240, 71, 71, 20%);
 
-  --bg-tooltip: #353535;
-  --bg-badge: #989898;
-  --bg-ping: hsla(137deg, 100%, 68%, 40%);
-  --bg-ping-hover: hsla(137deg, 100%, 68%, 50%);
-  --bg-divider: hsla(0, 0%, 0%, .1);
+  --bg-tooltip: #000;
+  --bg-badge: hsl(0, 0%, 75%);
+  --bg-ping: hsla(137deg, 100%, 38%, 40%);
+  --bg-ping-hover: hsla(137deg, 100%, 38%, 50%);
+  --bg-divider: hsla(0, 0%, 100%, .1);
 
   /* text color | --tc-[background type]-[priority]: value */
-  --tc-surface-high: #000000;
-  --tc-surface-normal: rgba(0, 0, 0, 78%);
-  --tc-surface-normal-low: rgba(0, 0, 0, 60%);
-  --tc-surface-low: rgba(0, 0, 0, 48%);
+  --tc-surface-high: rgba(255, 255, 255, 98%);
+  --tc-surface-normal: rgba(255, 255, 255, 94%);
+  --tc-surface-normal-low: rgba(255, 255, 255, 60%);
+  --tc-surface-low: rgba(255, 255, 255, 58%);
   
   --tc-primary-high: #ffffff;
-  --tc-primary-normal: rgba(255, 255, 255, 68%);
-  --tc-primary-low: rgba(255, 255, 255, 40%);
+  --tc-primary-normal: rgba(255, 255, 255, 0.68);
+  --tc-primary-low: rgba(255, 255, 255, 0.4);
   
   --tc-positive-high: var(--bg-positive);
   --tc-positive-normal: rgb(69, 184, 59, 80%);
@@ -60,16 +60,16 @@
   --tc-danger-normal: rgba(240, 71, 71, 88%);
   --tc-danger-low: rgba(240, 71, 71, 60%);
 
-  --tc-code: #e62498;
-  --tc-link: hsl(213deg 76% 56%);
   --tc-tooltip: white;
-  --tc-badge: white;
+  --tc-code: #e565b1;
+  --tc-link: hsl(213deg 94% 73%);
+  --tc-badge: black;
 
 
   /* system icons | --ic-[background type]-[priority]: value */
-  --ic-surface-high: #272727;
-  --ic-surface-normal: #626262;
-  --ic-surface-low: #7c7c7c;
+  --ic-surface-high: rgb(255, 255, 255);
+  --ic-surface-normal: rgba(255, 255, 255, 84%);
+  --ic-surface-low: rgba(255, 255, 255, 64%);
   --ic-primary-high: #ffffff;
   --ic-primary-normal: #ffffff;
   --ic-positive-high: rgba(69, 184, 59);
@@ -89,6 +89,18 @@
   --mx-uc-7: hsl(242, 89%, 65%);
   --mx-uc-8: hsl(94, 65%, 50%);
 
+  & .text {
+    /* override user mxid colors for texts */
+    --mx-uc-1: hsl(208, 100%, 58%);
+    --mx-uc-2: hsl(301, 80%, 70%);
+    --mx-uc-3: hsl(163, 93%, 41%);
+    --mx-uc-4: hsl(343, 91%, 66%);
+    --mx-uc-5: hsl(24, 90%, 67%);
+    --mx-uc-6: hsl(181, 90%, 50%);
+    --mx-uc-7: hsl(243, 100%, 74%);
+    --mx-uc-8: hsl(94, 66%, 50%);
+  }
+
   /* system icon size | -ic-[size]: value */
   --ic-large: 38px;
   --ic-normal: 24px;
@@ -103,10 +115,10 @@
 
 
   /* shadow and overlay */
-  --bg-overlay: rgba(0, 0, 0, 20%);
-  --bg-overlay-low: rgba(0, 0, 0, 50%);
+  --bg-overlay: rgba(0, 0, 0, 60%);
+  --bg-overlay-low: rgba(0, 0, 0, 80%);
 
-  --bs-popup: 0 0 16px rgba(0, 0, 0, 10%);
+  --bs-popup: 0 0 3px rgba(255, 255, 255, 30%);
 
   --bs-surface-border: inset 0 0 0 1px var(--bg-surface-border);
   --bs-surface-outline: 0 0 0 2px var(--bg-surface-border);
