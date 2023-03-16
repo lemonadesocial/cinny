@@ -2,21 +2,20 @@
 
 :root {
 
-  /* background color | --bg-[background type]: value */
-  --bg-surface: #FFFFFF;
-  --bg-surface-transparent: #FFFFFF00;
-  --bg-surface-low: #F6F6F6;
-  --bg-surface-low-transparent: #F6F6F600;
-  --bg-surface-extra-low: #F6F6F6;
-  --bg-surface-extra-low-transparent: #F6F6F600;
-  --bg-surface-hover: rgba(0, 0, 0, 3%);
-  --bg-surface-active: rgba(0, 0, 0, 5%);
-  --bg-surface-border: rgba(0, 0, 0, 6%);
+  --bg-surface: #000;
+  --bg-surface-transparent: hsla(208, 8%, 20%, 0);
+  --bg-surface-low: #000;
+  --bg-surface-low-transparent: hsla(208, 8%, 16%, 0);
+  --bg-surface-extra-low: hsl(208, 8%, 14%);
+  --bg-surface-extra-low-transparent: hsla(208, 8%, 14%, 0);
+  --bg-surface-hover: rgba(255, 255, 255, 3%);
+  --bg-surface-active: rgba(255, 255, 255, 5%);
+  --bg-surface-border: rgba(0, 0, 0, 20%);
 
-  --bg-primary: rgb(83, 110, 234);
-  --bg-primary-hover: rgba(83, 110, 234, 80%);
-  --bg-primary-active: rgba(83, 110, 234, 70%);
-  --bg-primary-border: rgba(83, 110, 234, 38%);
+  --bg-primary: rgb(42, 98, 166);
+  --bg-primary-hover: rgba(42, 98, 166, 80%);
+  --bg-primary-active: rgba(42, 98, 166, 70%);
+  --bg-primary-border: rgba(42, 98, 166, 38%);
 
   --bg-positive: rgb(69, 184, 59);
   --bg-positive-hover: rgba(69, 184, 59, 8%);
@@ -209,9 +208,9 @@
 
 @mixin dark-mode() {
   /* background color | --bg-[background type]: value */
-  --bg-surface: #141414;
+  --bg-surface: #000;
   --bg-surface-transparent: hsla(208, 8%, 20%, 0);
-  --bg-surface-low: #141414;
+  --bg-surface-low: #000;
   --bg-surface-low-transparent: hsla(208, 8%, 16%, 0);
   --bg-surface-extra-low: hsl(208, 8%, 14%);
   --bg-surface-extra-low-transparent: hsla(208, 8%, 14%, 0);
