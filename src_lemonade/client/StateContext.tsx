@@ -11,6 +11,7 @@ import { useSelectedTab } from '../../src/app/hooks/useSelectedTab';
 export interface CinnyStateContextType {
   loading?: boolean,
   selectedTab?: string,
+  inviteDirects?: Set<string>,
 }
 
 export const CinnyStateContext = React.createContext({});
@@ -19,6 +20,7 @@ export function CinnyStateProvider(props) {
   const { matrixToken } = props;
   const [loading, changeLoading] = React.useState(true);
   const [matrixLoggedIn, setMatrixLoggedIn] = React.useState(isAuthenticated());
+  const [inviteDirects, setInviteDirects] = React.useState(new Set());
   const [selectedTab] = useSelectedTab();
 
   React.useEffect(() => {
@@ -41,6 +43,8 @@ export function CinnyStateProvider(props) {
       initHotkeys();
       initRoomListListener(initMatrix.roomList);
       changeLoading(false);
+
+      if (initMatrix.roomList?.inviteDirects) setInviteDirects(initMatrix.roomList.inviteDirects);
     });
     initMatrix.init();
   }, [matrixLoggedIn])
@@ -48,7 +52,8 @@ export function CinnyStateProvider(props) {
   const values: CinnyStateContextType = React.useMemo(() => ({ 
     loading,
     selectedTab,
-  }), [loading, selectedTab])
+    inviteDirects,
+  }), [loading, selectedTab, inviteDirects]);
 
   return <CinnyStateContext.Provider {...props} value={values}/>;
 }
