@@ -20,11 +20,16 @@
       var(--bo-radius) 0 0 var(--bo-radius),
       );
     }
+
+    & .timeline-change {
+      display: none;
+    }
     
     & > .divider {
       margin: var(--sp-extra-tight);
       @include dir.side(margin, var(--sp-normal), var(--sp-extra-tight));
       @include dir.side(padding, calc(var(--av-small) + var(--sp-tight)), 0);
+      display: none;
     }
   }
 }
