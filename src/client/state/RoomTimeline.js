@@ -1,7 +1,8 @@
+import { EventType, Filter } from 'matrix-js-sdk';
 import EventEmitter from 'events';
+
 import initMatrix from '../initMatrix';
 import cons from './cons';
-
 import settings from './settings';
 
 function isEdited(mEvent) {
@@ -91,6 +92,18 @@ class RoomTimeline extends EventEmitter {
 
     this.liveTimeline = this.room.getLiveTimeline();
     this.activeTimeline = this.liveTimeline;
+
+    this.activeTimeline.eventTimelineSet.setFilter(Filter.fromJson(
+      null,
+      null,
+      {
+        room: {
+          timeline: {
+            types: [EventType.RoomMessage],
+          },
+        },
+      },
+    ));
 
     this.isOngoingPagination = false;
     this.ongoingDecryptionCount = 0;
