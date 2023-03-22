@@ -110,7 +110,7 @@ function RoomAliases({ roomId }) {
 
   const canPublishAlias = room.currentState.maySendStateEvent('m.room.canonical_alias', userId);
 
-  useEffect(() => isMountedStore.setItem(true), []);
+  useEffect(() => { isMountedStore.setItem(true) }, []);
 
   useEffect(() => {
     let isUnmounted = false;
