@@ -17,8 +17,7 @@ function BasicRoomView({ roomTimeline, eventId }) {
   const { roomId } = roomTimeline;
 
   return (
-    <div className="room-view" ref={roomViewRef} style={{ '--av-small': '0px' }}>
-      {/* <RoomViewHeader roomId={roomId} /> */}
+    <div className="room-view" ref={roomViewRef}>
       <div className="room-view__content-wrapper">
         <div className="room-view__scrollable">
           <RoomViewContent
