@@ -35,6 +35,7 @@ function RawModal({
     <Modal
       className={`${modalClass}raw-modal`}
       overlayClassName={`${modalOverlayClass}raw-modal__overlay`}
+      portalClassName="cinny-chat"
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onAfterClose={onAfterClose}
