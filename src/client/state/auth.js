@@ -16,4 +16,5 @@ const secret = {
 export {
   isAuthenticated,
   secret,
+  getSecret,
 };
