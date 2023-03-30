@@ -3,7 +3,8 @@ import * as sdk from 'matrix-js-sdk';
 import Olm from '@matrix-org/olm';
 // import { logger } from 'matrix-js-sdk/lib/logger';
 
-import { secret } from './state/auth';
+import { getSecret } from './state/auth';
+import cons from './state/cons';
 import RoomList from './state/RoomList';
 import AccountData from './state/AccountData';
 import RoomsInput from './state/RoomsInput';
@@ -37,12 +38,12 @@ class InitMatrix extends EventEmitter {
     await indexedDBStore.startup();
 
     this.matrixClient = sdk.createClient({
-      baseUrl: secret.baseUrl,
-      accessToken: secret.accessToken,
-      userId: secret.userId,
+      baseUrl: getSecret(cons.secretKey.BASE_URL),
+      accessToken: getSecret(cons.secretKey.ACCESS_TOKEN),
+      userId: getSecret(cons.secretKey.USER_ID),
       store: indexedDBStore,
       cryptoStore: new sdk.IndexedDBCryptoStore(global.indexedDB, 'crypto-store'),
-      deviceId: secret.deviceId,
+      deviceId: getSecret(cons.secretKey.DEVICE_ID),
       timelineSupport: true,
       cryptoCallbacks,
       verificationMethods: [
