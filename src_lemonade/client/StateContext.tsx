@@ -18,6 +18,7 @@ export const CinnyStateContext = React.createContext({});
 
 export function CinnyStateProvider(props) {
   const { matrixToken } = props;
+  const [pageLoaded, setPageLoaded] = React.useState(false);
   const [loading, changeLoading] = React.useState(true);
   const [matrixLoggedIn, setMatrixLoggedIn] = React.useState(isAuthenticated());
   const [inviteDirects, setInviteDirects] = React.useState(new Set<string>());
@@ -33,7 +34,7 @@ export function CinnyStateProvider(props) {
   }, [matrixToken, matrixLoggedIn]);
 
   React.useEffect(() => {
-    if (!matrixLoggedIn) return;
+    if (!matrixLoggedIn || !pageLoaded) return;
 
     initMatrix.once('init_loading_finished', () => {
       initHotkeys();
@@ -43,7 +44,15 @@ export function CinnyStateProvider(props) {
       if (initMatrix.roomList?.inviteDirects) setInviteDirects(initMatrix.roomList.inviteDirects);
     });
     initMatrix.init();
-  }, [matrixLoggedIn])
+  }, [matrixLoggedIn, pageLoaded])
+
+  React.useEffect(() => {
+    document.onreadystatechange = () => {
+      if (document.readyState !== 'complete') return;
+
+      setPageLoaded(true);
+    };
+  }, []);
 
   const values: CinnyStateContextType = React.useMemo(() => ({ 
     loading,
