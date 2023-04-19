@@ -47,7 +47,9 @@ export function CinnyStateProvider(props) {
   }, [matrixLoggedIn, pageLoaded])
 
   React.useEffect(() => {
+      console.log('document.readyState', document.readyState);
     document.onreadystatechange = () => {
+      console.log('document.readyState changed', document.readyState);
       if (document.readyState !== 'complete') return;
 
       setPageLoaded(true);
