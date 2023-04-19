@@ -47,12 +47,17 @@ export function CinnyStateProvider(props) {
   }, [matrixLoggedIn, pageLoaded])
 
   React.useEffect(() => {
-    document.onreadystatechange = () => {
-      if (document.readyState !== 'complete') return;
-
+      console.log('document.readyState', document.readyState);
+    const onPageLoad = () => {
+      if (pageLoaded) return;
       setPageLoaded(true);
-    };
+    }
+
+    window.addEventListener('load', onPageLoad);
+
+    return window.removeEventListener('load', onPageLoad);
   }, []);
+  console.log('pageLoaded', pageLoaded);
 
   const values: CinnyStateContextType = React.useMemo(() => ({ 
     loading,
