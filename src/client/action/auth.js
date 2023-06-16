@@ -2,6 +2,8 @@ import * as sdk from 'matrix-js-sdk';
 import cons from '../state/cons';
 
 function updateLocalStore(accessToken, deviceId, userId, baseUrl) {
+  if (typeof window === 'undefined') return;
+
   localStorage.setItem(cons.secretKey.ACCESS_TOKEN, accessToken);
   localStorage.setItem(cons.secretKey.DEVICE_ID, deviceId);
   localStorage.setItem(cons.secretKey.USER_ID, userId);
