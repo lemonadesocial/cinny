@@ -1,24 +1,27 @@
-import * as React from 'react';
+import { useMemo, createContext, useContext } from 'react';
 import { Room } from 'matrix-js-sdk';
 
-import initMatrix from '../../src/client/initMatrix';
-import { createDM, join } from '../../src/client/action/room';
-import { hasDMWith } from '../../src/util/matrixUtil';
-import { selectRoom } from '../../src/client/action/navigation';
+import { createDM, join } from '../../client/action/room';
+import { hasDMWith } from '../../util/matrixUtil';
+import { selectRoom, selectTab } from '../../client/action/navigation';
+import { CinnyStateContext } from './StateContext';
 
 export interface CinnyActionContextType {
   openDM(userId: string): Promise<string | null>;
   getRoom(roomId: string): Promise<Room | null>;
   joinRoom(roomId: string): Promise<string>;
+  selectTab(tabId: string): void;
 }
 
-export const CinnyActionContext = React.createContext<CinnyActionContextType>({
+export const CinnyActionContext = createContext<CinnyActionContextType>({
   openDM: async () => null,
   getRoom: async () => null,
   joinRoom: async () => '',
+  selectTab: () => null,
 });
 
-export function CinnyActionProvider(props) {
+export function CinnyActionProvider(props: any) {
+  const { initMatrix } = useContext(CinnyStateContext);
   async function openDM(userId: string) {
     const dmRoomId = hasDMWith(userId);
 
@@ -49,11 +52,12 @@ export function CinnyActionProvider(props) {
     return join(roomId, isDM);
   }
 
-  const values: CinnyActionContextType = React.useMemo(() => ({ 
+  const values = { 
     openDM,
     getRoom,
     joinRoom,
-  }), []);
+    selectTab,
+  };
 
   return <CinnyActionContext.Provider {...props} value={values}/>;
 }

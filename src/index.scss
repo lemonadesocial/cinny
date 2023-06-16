@@ -1,12 +1,5 @@
 @use './app/partials/screen';
 
-@font-face {
-  font-family: Twemoji;
-  src: url('../public/font/Twemoji.Mozilla.v.7.0.woff2'),
-    url('../public/font/Twemoji.Mozilla.v0.7.0.ttf');
-  font-display: swap;
-}
-
 :root {
   /* background color | --bg-[background type]: value */
   --bg-surface: #ffffff;
@@ -366,7 +359,6 @@ body {
   font-family: var(--font-secondary);
   font-size: 16px;
   font-weight: var(--fw-normal);
-  background-color: var(--bg-surface-low);
 
   /*Why font-variant-ligatures => https://github.com/rsms/inter/issues/222 */
   font-variant-ligatures: no-contextual;

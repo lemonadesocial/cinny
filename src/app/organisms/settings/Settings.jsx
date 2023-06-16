@@ -445,6 +445,8 @@ function Settings() {
     }
   };
 
+  if (typeof window === 'undefined') return null;
+
   return (
     <PopupWindow
       isOpen={isOpen}
