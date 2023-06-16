@@ -2,7 +2,7 @@ import EventEmitter from 'events';
 import appDispatcher from '../dispatcher';
 import cons from './cons';
 
-class Navigation extends EventEmitter {
+export class Navigation extends EventEmitter {
   constructor() {
     super();
     // this will attached by initMatrix
