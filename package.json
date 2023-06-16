@@ -1,14 +1,20 @@
 {
-  "name": "cinny",
-  "version": "2.2.6",
+  "version": "2.2.6-lemonade.9",
+  "name": "@lemonadesocial/cinny",
   "description": "Yet another matrix client",
-  "main": "index.js",
+  "files": ["dist"],
+  "main": "./dist/lib/cinny.mjs",
+  "types": "./dist/lib/lemonade/lib.d.ts",
   "engines": {
     "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "@lemonadesocial:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "build:lib": "vite build --config vite.lib.config.js",
     "lint": "yarn check:eslint && yarn check:prettier",
     "check:eslint": "eslint src/*",
     "check:prettier": "prettier --check .",
@@ -87,6 +93,7 @@
     "sass": "1.56.2",
     "typescript": "4.9.4",
     "vite": "4.3.9",
+    "vite-plugin-dts": "2.3.0",
     "vite-plugin-static-copy": "0.13.0"
   },
   "packageManager": "yarn@1.22.19"
