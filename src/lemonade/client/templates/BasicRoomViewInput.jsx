@@ -5,33 +5,33 @@ import PropTypes from 'prop-types';
 
 import TextareaAutosize from 'react-autosize-textarea';
 
-import initMatrix from '../../../src/client/initMatrix';
-import cons from '../../../src/client/state/cons';
-import settings from '../../../src/client/state/settings';
-import navigation from '../../../src/client/state/navigation';
-import { bytesToSize } from '../../../src/util/common';
-import { getUsername } from '../../../src/util/matrixUtil';
-import colorMXID from '../../../src/util/colorMXID';
+import initMatrix from '../../../client/initMatrix';
+import cons from '../../../client/state/cons';
+import settings from '../../../client/state/settings';
+import navigation from '../../../client/state/navigation';
+import { bytesToSize } from '../../../util/common';
+import { getUsername } from '../../../util/matrixUtil';
+import colorMXID from '../../../util/colorMXID';
 
-import Text from '../../../src/app/atoms/text/Text';
-import RawIcon from '../../../src/app/atoms/system-icons/RawIcon';
-import IconButton from '../../../src/app/atoms/button/IconButton';
-import ScrollView from '../../../src/app/atoms/scroll/ScrollView';
-import { MessageReply } from '../../../src/app/molecules/message/Message';
+import Text from '../../../app/atoms/text/Text';
+import RawIcon from '../../../app/atoms/system-icons/RawIcon';
+import IconButton from '../../../app/atoms/button/IconButton';
+import ScrollView from '../../../app/atoms/scroll/ScrollView';
+import { MessageReply } from '../../../app/molecules/message/Message';
 
-import { confirmDialog } from '../../../src/app/molecules/confirm-dialog/ConfirmDialog';
+import { confirmDialog } from '../../../app/molecules/confirm-dialog/ConfirmDialog';
 
-import CirclePlusIC from '../../../public/res/ic/outlined/circle-plus.svg';
-import SendIC from '../../../public/res/ic/outlined/send.svg';
-import ShieldIC from '../../../public/res/ic/outlined/shield.svg';
-import VLCIC from '../../../public/res/ic/outlined/vlc.svg';
-import VolumeFullIC from '../../../public/res/ic/outlined/volume-full.svg';
-import FileIC from '../../../public/res/ic/outlined/file.svg';
-import CrossIC from '../../../public/res/ic/outlined/cross.svg';
+import CirclePlusIC from '../../../../public/res/ic/outlined/circle-plus.svg';
+import SendIC from '../../../../public/res/ic/outlined/send.svg';
+import ShieldIC from '../../../../public/res/ic/outlined/shield.svg';
+import VLCIC from '../../../../public/res/ic/outlined/vlc.svg';
+import VolumeFullIC from '../../../../public/res/ic/outlined/volume-full.svg';
+import FileIC from '../../../../public/res/ic/outlined/file.svg';
+import CrossIC from '../../../../public/res/ic/outlined/cross.svg';
 
-import '../../../src/app/organisms/room/RoomViewInput.scss';
+import '../../../app/organisms/room/RoomViewInput.scss';
 
-import commands from '../../../src/app/organisms/room/commands';
+import commands from '../../../app/organisms/room/commands';
 
 const CMD_REGEX = /(^\/|:|@)(\S*)$/;
 let isTyping = false;

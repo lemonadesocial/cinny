@@ -30,12 +30,16 @@ const defaultSettings: Settings = {
 };
 
 export const getSettings = () => {
+  if (typeof window === 'undefined') return undefined;
+
   const settings = localStorage.getItem(STORAGE_KEY);
   if (settings === null) return defaultSettings;
   return JSON.parse(settings) as Settings;
 };
 
 export const setSettings = (settings: Settings) => {
+  if (typeof window === 'undefined') return;
+
   localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
 };
 

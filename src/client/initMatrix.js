@@ -12,14 +12,17 @@ import Notifications from './state/Notifications';
 import { cryptoCallbacks } from './state/secretStorageKeys';
 import navigation from './state/navigation';
 
-global.Olm = Olm;
-
 // logger.disableAll();
 
-class InitMatrix extends EventEmitter {
+export class InitMatrix extends EventEmitter {
   constructor() {
     super();
 
+    if (typeof window === 'undefined') return;
+
+    window.global ||= window;
+
+    global.Olm = Olm;
     navigation.initMatrix = this;
   }
 
