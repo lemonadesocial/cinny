@@ -1,6 +1,6 @@
 // https://github.com/matrix-org/matrix-react-sdk/blob/e78a1adb6f1af2ea425b0bae9034fb7344a4b2e8/src/utils/MegolmExportEncryption.js
 
-const subtleCrypto = window.crypto.subtle || window.crypto.webkitSubtle;
+const subtleCrypto = typeof window !== 'undefined' && (window.crypto.subtle || window.crypto.webkitSubtle);
 
 /**
  * Make an Error object which has a friendlyText property which is already

@@ -1,9 +1,7 @@
-import * as React from 'react';
-
 import { CinnyActionProvider } from "./ActionContext";
 import { CinnyStateProvider } from "./StateContext";
 
-export function CinnyProviders(props) {
+export function CinnyProviders(props: any) {
   return (
     <CinnyActionProvider>
       <CinnyStateProvider {...props} />

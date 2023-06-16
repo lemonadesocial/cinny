@@ -7,21 +7,27 @@ import { darkTheme, butterTheme, silverTheme } from '../../colors.css';
 import { onLightFontWeight, onDarkFontWeight } from '../../config.css';
 
 function getSettings() {
+  if (typeof window === 'undefined') return undefined;
+
   const settings = localStorage.getItem('settings');
   if (settings === null) return null;
   return JSON.parse(settings);
 }
 
 function setSettings(key, value) {
+  if (typeof window === 'undefined') return;
+
   let settings = getSettings();
   if (settings === null) settings = {};
   settings[key] = value;
   localStorage.setItem('settings', JSON.stringify(settings));
 }
 
-class Settings extends EventEmitter {
+export class Settings extends EventEmitter {
   constructor() {
     super();
+
+    if (typeof window === 'undefined') return;
 
     this.themeClasses = [lightTheme, silverTheme, darkTheme, butterTheme];
     this.fontWeightClasses = [onLightFontWeight, onLightFontWeight, onDarkFontWeight, onDarkFontWeight]
