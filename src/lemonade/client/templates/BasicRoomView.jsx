@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 import EventEmitter from 'events';
 
-import RoomViewContent from '../../../src/app/organisms/room/RoomViewContent';
-import RoomViewFloating from '../../../src/app/organisms/room/RoomViewFloating';
+import RoomViewContent from '../../../app/organisms/room/RoomViewContent';
+import RoomViewFloating from '../../../app/organisms/room/RoomViewFloating';
 import BasicRoomViewInput from './BasicRoomViewInput';
 
-import '../../../src/app/organisms/room/RoomView.scss';
+import '../../../app/organisms/room/RoomView.scss';
 
 const viewEvent = new EventEmitter();
 

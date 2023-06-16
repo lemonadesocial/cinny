@@ -1,5 +1,5 @@
-import { createTemporaryClient, updateLocalStore } from '../../../src/client/action/auth';
-import cons from '../../../src/client/state/cons';
+import { createTemporaryClient, updateLocalStore } from '../../../client/action/auth';
+import cons from '../../../client/state/cons';
 
 export async function loginWithToken(baseUrl, token) {
   const client = createTemporaryClient(baseUrl);
