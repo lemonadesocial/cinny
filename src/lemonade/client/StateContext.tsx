@@ -1,27 +1,46 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import initMatrix from '../../src/client/initMatrix';
+import initMatrix, { InitMatrix } from '../../client/initMatrix';
 import { loginWithToken } from './action/auth';
-import { initHotkeys } from '../../src/client/event/hotkeys';
-import { initRoomListListener } from '../../src/client/event/roomList';
-import { isAuthenticated } from '../../src/client/state/auth';
-import { useSelectedTab } from '../../src/app/hooks/useSelectedTab';
+import { initHotkeys } from '../../client/event/hotkeys';
+import { initRoomListListener } from '../../client/event/roomList';
+import { isAuthenticated } from '../../client/state/auth';
+import { useSelectedTab } from '../../app/hooks/useSelectedTab';
+import settings, { Settings } from '../../client/state/settings';
+import navigation, { Navigation } from '../../client/state/navigation';
+import { MatrixClientProvider } from '../../app/hooks/useMatrixClient';
 
 export interface CinnyStateContextType {
-  loading?: boolean,
-  selectedTab?: string,
-  inviteDirects?: Set<string>,
+  loading?: boolean;
+  selectedTab?: string;
+  inviteDirects?: Set<string>;
+  initMatrix: InitMatrix;
+  navigation: Navigation;
+  settings: Settings;
 }
 
-export const CinnyStateContext = React.createContext({});
+export const CinnyStateContext = React.createContext<CinnyStateContextType>({
+  initMatrix,
+  navigation,
+  settings,
+});
 
-export function CinnyStateProvider(props) {
+export function CinnyStateProvider(props: any) {
   const { matrixToken } = props;
   const [loading, changeLoading] = React.useState(true);
   const [matrixLoggedIn, setMatrixLoggedIn] = React.useState(isAuthenticated());
   const [inviteDirects, setInviteDirects] = React.useState(new Set<string>());
   const [selectedTab] = useSelectedTab();
+
+
+  React.useEffect(() => {
+    if (settings.useSystemTheme) {
+      settings.toggleUseSystemTheme();
+    }
+
+    settings.setTheme(2); // Dark theme
+  }, []);
 
   React.useEffect(() => {
     if (!matrixToken || matrixLoggedIn) return;
@@ -49,9 +68,16 @@ export function CinnyStateProvider(props) {
     loading,
     selectedTab,
     inviteDirects,
+    initMatrix,
+    navigation,
+    settings,
   }), [loading, selectedTab, inviteDirects]);
 
-  return <CinnyStateContext.Provider {...props} value={values}/>;
+  return (
+    <MatrixClientProvider value={initMatrix.matrixClient || null}>
+      <CinnyStateContext.Provider {...props} value={values}/>
+    </MatrixClientProvider>
+  );
 }
 
 CinnyStateProvider.propTypes = {
