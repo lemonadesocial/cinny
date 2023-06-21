@@ -2,7 +2,9 @@
   "version": "2.2.6+lemonade.7",
   "name": "@lemonadesocial/cinny",
   "description": "Yet another matrix client",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/lib/cinny.mjs",
   "types": "./dist/lib/lemonade/lib.d.ts",
   "engines": {
