@@ -1,6 +1,6 @@
 {
   "name": "@lemonadesocial/cinny",
-  "version": "2.2.6-lemonade.11",
+  "version": "3.2.0-lemonade.1",
   "description": "Yet another matrix client",
   "files": ["dist"],
   "main": "./dist/lib/cinny.mjs",
