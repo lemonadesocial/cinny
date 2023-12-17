@@ -102,6 +102,8 @@ async function join(roomIdOrAlias, isDM = false, via = undefined) {
 
   try {
     const resultRoom = await mx.joinRoom(roomIdOrAlias, { viaServers });
+    console.log('resultRoom', resultRoom);
+    console.log('mx.getRoom(resultRoom.rooId)', mx.getRoom(resultRoom.rooId));
 
     if (isDM) {
       const targetUserId = guessDMRoomTargetId(mx.getRoom(resultRoom.roomId), mx.getUserId());
