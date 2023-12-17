@@ -2,39 +2,39 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import EventEmitter from 'events';
-
 import RoomViewContent from '../../../app/organisms/room/RoomViewContent';
 import RoomViewFloating from '../../../app/organisms/room/RoomViewFloating';
-import BasicRoomViewInput from './BasicRoomViewInput';
+import { RoomTimeline } from '../../../app/organisms/room/RoomTimeline';
+import { RoomInput } from '../../../app/organisms/room/RoomInput';
 
 import '../../../app/organisms/room/RoomView.scss';
 
-const viewEvent = new EventEmitter();
-
-function BasicRoomView({ roomTimeline, eventId }) {
+function BasicRoomView({ room, eventId }) {
   const roomViewRef = useRef(null);
+  const roomInputRef = useRef(null);
 
-  const { roomId } = roomTimeline;
+  const { roomId } = room;
 
   return (
     <div className="room-view" ref={roomViewRef}>
       <div className="room-view__content-wrapper">
         <div className="room-view__scrollable">
-          <RoomViewContent
+          <RoomTimeline
+            key={roomId}
+            room={room}
             eventId={eventId}
-            roomTimeline={roomTimeline}
+            roomInputRef={roomInputRef}
+            editor={editor}
           />
-          <RoomViewFloating
-            roomId={roomId}
-            roomTimeline={roomTimeline}
-          />
+          <RoomViewTyping room={room} />
         </div>
         <div className="room-view__sticky">
-          <BasicRoomViewInput
+          <RoomInput
+            room={room}
+            editor={editor}
             roomId={roomId}
-            roomTimeline={roomTimeline}
-            viewEvent={viewEvent}
+            roomViewRef={roomViewRef}
+            ref={roomInputRef}
           />
         </div>
       </div>
