@@ -11,6 +11,7 @@ import CinnyWindows from '../app/organisms/pw/Windows';
 import CinnyEmojiBoardOpener from '../app/organisms/emoji-board/EmojiBoardOpener';
 import CinnyProviders from './client/CinnyProviders';
 import RoomTimeline from '../client/state/RoomTimeline';
+import RoomView from '../app/organisms/room/RoomView';
 import { CinnyActionContext } from './client/ActionContext';
 import { CinnyStateContext } from './client/StateContext';
 
@@ -30,4 +31,5 @@ export {
   CinnyStateContext,
   CinnyProviders,
   RoomTimeline,
+  RoomView,
 };

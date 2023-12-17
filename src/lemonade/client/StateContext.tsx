@@ -66,14 +66,14 @@ export function CinnyStateProvider(props: any) {
 
   console.log('matrixToken', matrixToken);
 
-  const values: CinnyStateContextType = useMemo(() => ({ 
+  const values = { 
     loading,
     selectedTab,
     inviteDirects,
     initMatrix,
     navigation,
     settings,
-  }), [loading, selectedTab, inviteDirects]);
+  };
 
   return (
     <MatrixClientProvider value={initMatrix.matrixClient || null}>

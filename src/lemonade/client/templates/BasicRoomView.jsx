@@ -2,43 +2,48 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import EventEmitter from 'events';
-
-import RoomViewContent from '../../../app/organisms/room/RoomViewContent';
-import RoomViewFloating from '../../../app/organisms/room/RoomViewFloating';
-import BasicRoomViewInput from './BasicRoomViewInput';
+import { RoomTimeline } from '../../../app/organisms/room/RoomTimeline';
+import { RoomViewTyping } from '../../../app/organisms/room/RoomViewTyping';
+import { RoomInput } from '../../../app/organisms/room/RoomInput';
+import { useEditor } from '../../../app/components/editor';
+import { PowerLevelsContextProvider, usePowerLevels } from '../../../app/hooks/usePowerLevels';
 
 import '../../../app/organisms/room/RoomView.scss';
 
-const viewEvent = new EventEmitter();
-
-function BasicRoomView({ roomTimeline, eventId }) {
+function BasicRoomView({ room, eventId }) {
   const roomViewRef = useRef(null);
+  const roomInputRef = useRef(null);
+  const editor = useEditor();
+  const powerLevelAPI = usePowerLevels(room);
 
-  const { roomId } = roomTimeline;
+  const { roomId } = room;
 
   return (
-    <div className="room-view" ref={roomViewRef}>
-      <div className="room-view__content-wrapper">
-        <div className="room-view__scrollable">
-          <RoomViewContent
-            eventId={eventId}
-            roomTimeline={roomTimeline}
-          />
-          <RoomViewFloating
-            roomId={roomId}
-            roomTimeline={roomTimeline}
-          />
-        </div>
-        <div className="room-view__sticky">
-          <BasicRoomViewInput
-            roomId={roomId}
-            roomTimeline={roomTimeline}
-            viewEvent={viewEvent}
-          />
+    <PowerLevelsContextProvider value={powerLevelAPI}>
+      <div className="room-view" ref={roomViewRef}>
+        <div className="room-view__content-wrapper">
+          <div className="room-view__scrollable">
+            <RoomTimeline
+              key={roomId}
+              room={room}
+              eventId={eventId}
+              roomInputRef={roomInputRef}
+              editor={editor}
+            />
+            <RoomViewTyping room={room} />
+          </div>
+          <div className="room-view__sticky">
+            <RoomInput
+              room={room}
+              editor={editor}
+              roomId={roomId}
+              roomViewRef={roomViewRef}
+              ref={roomInputRef}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </PowerLevelsContextProvider>
   );
 }
 
