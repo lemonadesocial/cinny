@@ -51,6 +51,8 @@ function addRoomToMDirect(roomId, userId) {
  * @returns {string} User ID of the user that the room is probably a DM with
  */
 function guessDMRoomTargetId(room, myUserId) {
+  console.log('room', room);
+  console.log('myUserId', myUserId);
   let oldestMemberTs;
   let oldestMember;
 
@@ -102,6 +104,8 @@ async function join(roomIdOrAlias, isDM = false, via = undefined) {
 
   try {
     const resultRoom = await mx.joinRoom(roomIdOrAlias, { viaServers });
+    console.log('resultRoom', resultRoom);
+    console.log('mx.getRoom(resultRoom.roomId)', mx.getRoom(resultRoom.roomId));
 
     if (isDM) {
       const targetUserId = guessDMRoomTargetId(mx.getRoom(resultRoom.roomId), mx.getUserId());
