@@ -3,9 +3,9 @@ import { CinnyStateProvider } from "./StateContext";
 
 export function CinnyProviders(props: any) {
   return (
-    <CinnyActionProvider>
-      <CinnyStateProvider {...props} />
-    </CinnyActionProvider>
+    <CinnyStateProvider {...props}>
+      <CinnyActionProvider {...props}/>
+    </CinnyStateProvider>
   );
 }
 
