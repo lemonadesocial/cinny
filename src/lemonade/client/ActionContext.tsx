@@ -22,6 +22,7 @@ export const CinnyActionContext = createContext<CinnyActionContextType>({
 
 export function CinnyActionProvider(props: any) {
   const { initMatrix } = useContext(CinnyStateContext);
+  
   async function openDM(userId: string) {
     const dmRoomId = hasDMWith(userId);
 
