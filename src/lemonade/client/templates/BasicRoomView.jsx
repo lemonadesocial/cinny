@@ -2,6 +2,8 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { Room } from 'matrix-js-sdk/src/models/room';
+
 import { RoomTimeline } from '../../../app/organisms/room/RoomTimeline';
 import { RoomViewTyping } from '../../../app/organisms/room/RoomViewTyping';
 import { RoomInput } from '../../../app/organisms/room/RoomInput';
@@ -10,7 +12,7 @@ import { PowerLevelsContextProvider, usePowerLevels } from '../../../app/hooks/u
 
 import '../../../app/organisms/room/RoomView.scss';
 
-function BasicRoomView({ room, eventId }) {
+function BasicRoomView({ room }) {
   const roomViewRef = useRef(null);
   const roomInputRef = useRef(null);
   const editor = useEditor();
@@ -26,7 +28,6 @@ function BasicRoomView({ room, eventId }) {
             <RoomTimeline
               key={roomId}
               room={room}
-              eventId={eventId}
               roomInputRef={roomInputRef}
               editor={editor}
             />
@@ -47,12 +48,8 @@ function BasicRoomView({ room, eventId }) {
   );
 }
 
-BasicRoomView.defaultProps = {
-  eventId: null,
-};
 BasicRoomView.propTypes = {
-  roomTimeline: PropTypes.shape({ roomId: PropTypes.string }).isRequired,
-  eventId: PropTypes.string,
+  room: Room.isRequired,
 };
 
 export default BasicRoomView;

@@ -1,3 +1,4 @@
+import 'folds/dist/style.css';
 import cons from '../client/state/cons';
 import BasicRoomView from './client/templates/BasicRoomView';
 import { ClientContent } from '../app/templates/client/ClientContent';
@@ -14,6 +15,8 @@ import RoomTimeline from '../client/state/RoomTimeline';
 import RoomView from '../app/organisms/room/RoomView';
 import { CinnyActionContext } from './client/ActionContext';
 import { CinnyStateContext } from './client/StateContext';
+
+import { configClass, varsClass } from 'folds/dist/index.js';
 
 export {
   cons,
@@ -32,4 +35,6 @@ export {
   CinnyProviders,
   RoomTimeline,
   RoomView,
+  configClass,
+  varsClass,
 };
