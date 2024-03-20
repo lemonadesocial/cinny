@@ -3439,10 +3439,10 @@ focus-trap@^7.2.0:
   dependencies:
     tabbable "^6.2.0"
 
-folds@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/folds/-/folds-1.5.0.tgz#aa3119f91840488bff3f84cd7b843654418e1f29"
-  integrity sha512-1QNHzD57OxFZT5SOe0nWcrKQvWmfMRv1f5sTF8xhGtwx9rajjv36T9SwCcj9Fh58PbERqOdBiwvpdhu+BQTVjg==
+folds@1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/folds/-/folds-1.5.1.tgz#c0e924976d58809dc8e65bcd4fe9fead4b198df7"
+  integrity sha512-2QxyA+FRKjPKXDTMDoD7NmOUiReWrKYO0Msg44QqlzTkTrRVEzJgyPIfC/Ia4/u0ByQpk6dbq8UQxomKmneJ/g==
 
 for-each@^0.3.3:
   version "0.3.3"
