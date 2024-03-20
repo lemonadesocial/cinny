@@ -14,6 +14,9 @@ import RoomTimeline from '../client/state/RoomTimeline';
 import RoomView from '../app/organisms/room/RoomView';
 import { CinnyActionContext } from './client/ActionContext';
 import { CinnyStateContext } from './client/StateContext';
+import 'folds/dist/style.css';
+
+import { configClass, varsClass } from 'folds/dist/index.js';
 
 export {
   cons,
@@ -32,4 +35,6 @@ export {
   CinnyProviders,
   RoomTimeline,
   RoomView,
+  configClass,
+  varsClass,
 };
