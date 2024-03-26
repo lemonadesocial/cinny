@@ -1,9 +1,9 @@
 import { useMemo, createContext, useContext } from 'react';
 import { Room } from 'matrix-js-sdk';
 
-import { createDM, join } from '../../client/action/room';
+import { createDM, join, createRoom } from '../../client/action/room';
 import { hasDMWith } from '../../util/matrixUtil';
-import { selectRoom, selectTab } from '../../client/action/navigation';
+import { selectRoom as selectRoomAction, selectTab } from '../../client/action/navigation';
 import { CinnyStateContext } from './StateContext';
 
 export interface CinnyActionContextType {
@@ -11,6 +11,8 @@ export interface CinnyActionContextType {
   getRoom(roomId: string): Promise<Room | null>;
   joinRoom(roomId: string): Promise<string>;
   selectTab(tabId: string): void;
+  createRoom: (option: { name: string; topic?: string; joinRule?: 'public' | 'private' }) => Promise<{ room_id: string }>;
+  selectRoom: (roomId: string, eventId: string) => void;
 }
 
 export const CinnyActionContext = createContext<CinnyActionContextType>({
@@ -18,6 +20,8 @@ export const CinnyActionContext = createContext<CinnyActionContextType>({
   getRoom: async () => null,
   joinRoom: async () => '',
   selectTab: () => null,
+  selectRoom: () => null,
+  createRoom: async (option) => ({ room_id: '' }),
 });
 
 export function CinnyActionProvider(props: any) {
@@ -27,14 +31,14 @@ export function CinnyActionProvider(props: any) {
     const dmRoomId = hasDMWith(userId);
 
     if (dmRoomId) {
-      selectRoom(dmRoomId);
+      selectRoomAction(dmRoomId);
       return dmRoomId;
     }
 
     const createdRoom = await createDM(userId, false);
 
     if (createdRoom?.room_id) {
-      selectRoom(createdRoom.room_id);
+      selectRoomAction(createdRoom.room_id);
       return createdRoom?.room_id;
     }
 
@@ -53,11 +57,17 @@ export function CinnyActionProvider(props: any) {
     return join(roomId, isDM);
   }
 
-  const values = { 
+  async function selectRoom(roomId: string) {
+    return selectRoomAction(roomId);
+  }
+
+  const values = {
     openDM,
     getRoom,
     joinRoom,
     selectTab,
+    createRoom,
+    selectRoom,
   };
 
   return <CinnyActionContext.Provider {...props} value={values}/>;
