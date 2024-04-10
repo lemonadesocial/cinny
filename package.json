@@ -1,6 +1,6 @@
 {
   "name": "@lemonadesocial/cinny",
-  "version": "3.2.0-lemonade.8",
+  "version": "3.2.0-lemonade.10",
   "description": "Yet another matrix client",
   "files": [
     "dist"

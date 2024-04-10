@@ -10,14 +10,14 @@
     max-width: 600px;
   }
   &__logo {
-    width: 64px;
-    height: 64px;
+    width: 90px;
+    height: 90px;
   }
   &__heading {
     margin: var(--sp-extra-loose) 0 var(--sp-tight);
     color: var(--tc-surface-high);
   }
   &__subheading {
-    color: var(--tc-surface-normal);
+    color: var(--tc-surface-low);
   }
 }
