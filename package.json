@@ -6,6 +6,7 @@
     "dist"
   ],
   "main": "./dist/lib/cinny.mjs",
+  "type": "module",
   "types": "./dist/lib/lemonade/lib.d.ts",
   "engines": {
     "node": ">=16.0.0"
